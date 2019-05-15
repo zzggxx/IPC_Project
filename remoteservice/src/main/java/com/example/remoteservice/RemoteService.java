@@ -12,6 +12,11 @@ public class RemoteService extends Service {
         public int add(int i, int j) throws RemoteException {
             return i + j;
         }
+
+        @Override
+        public int subtract(int i, int j) throws RemoteException {
+            return i - j;
+        }
     };
 
     @Override

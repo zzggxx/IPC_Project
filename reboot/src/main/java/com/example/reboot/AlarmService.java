@@ -27,7 +27,7 @@ public class AlarmService extends IntentService {
 //        long alarmDateTimeMillis = DateTimeUtil.stringToMillis(alarmDateTime);
 
         AlarmManagerUtil.sendAlarmBroadcast(this, taskId,
-                AlarmManager.RTC_WAKEUP, alarmDateTime, AlarmReceiver.class);
+                AlarmManager.RTC_WAKEUP , alarmDateTime, AlarmReceiver.class);
 
     }
 

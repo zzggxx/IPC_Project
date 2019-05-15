@@ -21,6 +21,8 @@ public class BootCompleteReceiver extends BroadcastReceiver {
             Log.i(TAG, "onReceive: phone reboot completed");
 
 
+            SPUtils.saveObject(context, "phone_reboot_complete", String.valueOf(System.currentTimeMillis()));
+
             String restart_time = SPUtils.getString(context, "restart_time", null);
             if (!TextUtils.isEmpty(restart_time)) {
 
