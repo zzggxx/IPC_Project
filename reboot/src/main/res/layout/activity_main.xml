@@ -12,7 +12,7 @@
         android:id="@+id/tv_restart_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="重启时间_01:00"
+        android:text="@string/start_time"
         android:textColor="#000000"
         android:textSize="20sp"/>
 
@@ -21,6 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="修改重启时间"/>
+        android:text="@string/change_time"/>
 
 </RelativeLayout>
