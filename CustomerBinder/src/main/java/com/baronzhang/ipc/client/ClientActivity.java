@@ -25,6 +25,20 @@ public class ClientActivity extends AppCompatActivity {
     private BookManager bookManager;
     private boolean isConnection = false;
 
+//    private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
+//        @Override
+//        public void binderDied() {
+//            if (bookManager == null) {
+//                return;
+//            }
+//            bookManager.asBinder().unlinkToDeath(mDeathRecipient,0);
+//            bookManager = null;
+//            重新绑定
+//            attemptToBindService();
+//
+//        }
+//    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +96,10 @@ public class ClientActivity extends AppCompatActivity {
             isConnection = true;
             bookManager = Stub.asInterface(service);
             if (bookManager != null) {
+
+//                绑定成功再设置死亡代理
+
+
                 try {
                     List<Book> books = bookManager.getBooks();
                     Log.d("ClientActivity", books.toString());
