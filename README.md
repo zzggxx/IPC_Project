@@ -1,0 +1,3 @@
+1,remoteservice是app的远程服务
+2,CustomerBinder是不适用系统提供的aidl方法实现的binder.gauge
+3,app中增加进程间通过文件共享方式交换数据

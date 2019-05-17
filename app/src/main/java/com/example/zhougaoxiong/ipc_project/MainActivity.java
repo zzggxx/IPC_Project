@@ -3,15 +3,20 @@ package com.example.zhougaoxiong.ipc_project;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.remoteservice.IMyAidlInterface;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        演示通能1,一个进程开启多个进程
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        演示功能2,调用远程服务
         //                启动服务
         Intent intent = new Intent();
         intent.setAction("com.example.remoteservice");
@@ -66,6 +73,36 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+//        演示功能3,文件共享的方式IPC
+        saveBookToFile();
+    }
+
+    private void saveBookToFile() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String filePath = getExternalCacheDir().getAbsolutePath() + File.separator + "Book";
+                File file = new File(filePath);
+                ObjectOutputStream outputStream = null;
+                try {
+                    outputStream = new ObjectOutputStream(new FileOutputStream(file));
+                    outputStream.writeObject(new Book(1, "25"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (outputStream != null) {
+                        try {
+                            outputStream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }).start();
+
     }
 
     @Override
