@@ -30,6 +30,8 @@ public class Utils {
     }
 
 
+//    下一天的凌晨一点
+
     public static long getNextDayStartTime() {
 
         try {
@@ -49,6 +51,7 @@ public class Utils {
         return 0l;
     }
 
+//        获取当前设定时间的任务的毫秒值
     public static Long getMillis(int hourOfDay, int minute) {
 
         Calendar calendar = Calendar.getInstance();
@@ -59,6 +62,8 @@ public class Utils {
 
         int hour_of_day = calendar.get(Calendar.HOUR_OF_DAY);
         int minute1 = calendar.get(Calendar.MINUTE);
+
+//        当前的小时数大于规定的小时数 或者 小时数相等并且当前分钟数大于等于设定分钟数   ------>  设定下一天的时间值
 
         if (hour_of_day > hourOfDay || (hour_of_day == hourOfDay && minute1 >= minute)) {
 

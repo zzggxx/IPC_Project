@@ -1,1 +1,1 @@
-include ':app', ':reboot', ':remoteservice', ':CustomerBinder', ':messenger'
+include ':app', ':reboot', ':remoteservice', ':CustomerBinder', ':messenger', ':binderpool'

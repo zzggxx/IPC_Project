@@ -23,7 +23,9 @@ public class BootCompleteReceiver extends BroadcastReceiver {
 
             SPUtils.saveObject(context, "phone_reboot_complete", String.valueOf(System.currentTimeMillis()));
 
+//            重启时间
             String restart_time = SPUtils.getString(context, "restart_time", null);
+
             if (!TextUtils.isEmpty(restart_time)) {
 
                 String[] split = restart_time.split(":");
@@ -33,8 +35,19 @@ public class BootCompleteReceiver extends BroadcastReceiver {
                 startGet(context, Utils.getMillis(hourOfDay, minute));
 
             } else {
-                startGet(context, Utils.getNextDayStartTime());
+
+                long nextDayStartTime = Utils.getNextDayStartTime();
+                startGet(context, nextDayStartTime);
+                SPUtils.saveObject(context, "restart_time_millis", String.valueOf(nextDayStartTime));
             }
+
+            context.startService(new Intent(context,TimeChangeService.class));
+//            TimeChangeReceiver mTimeChangeReceiver = new TimeChangeReceiver();
+//            IntentFilter filter = new IntentFilter();
+//            filter.addAction(Intent.ACTION_TIME_TICK);
+//            filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+//            context.registerReceiver(mTimeChangeReceiver, filter, null, null);
+
         }
     }
 
