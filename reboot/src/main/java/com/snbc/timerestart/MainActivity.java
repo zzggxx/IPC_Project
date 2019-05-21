@@ -1,4 +1,4 @@
-package com.example.reboot;
+package com.snbc.timerestart;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.example.reboot.R;
 
 public class MainActivity extends AppCompatActivity {
 

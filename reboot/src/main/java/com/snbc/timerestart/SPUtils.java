@@ -1,4 +1,4 @@
-package com.example.reboot;
+package com.snbc.timerestart;
 
 import android.content.Context;
 import android.content.SharedPreferences;

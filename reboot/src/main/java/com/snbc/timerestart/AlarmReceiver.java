@@ -1,4 +1,4 @@
-package com.example.reboot;
+package com.snbc.timerestart;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -20,7 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         if (!TextUtils.isEmpty(restart_time_millis)) {
             long restart_time_l = Long.parseLong(restart_time_millis);
-            if (restart_time_l <= (System.currentTimeMillis() + 1 * 60 * 1000) ||
+            if (restart_time_l <= (System.currentTimeMillis() + 1 * 60 * 1000) &&
                     restart_time_l >= (System.currentTimeMillis() - 1 * 60 * 1000)) {
                 Utils.reBoot();
             } else {
