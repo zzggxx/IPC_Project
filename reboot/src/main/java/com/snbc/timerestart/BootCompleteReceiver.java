@@ -42,12 +42,6 @@ public class BootCompleteReceiver extends BroadcastReceiver {
             }
 
             context.startService(new Intent(context,TimeChangeService.class));
-//            TimeChangeReceiver mTimeChangeReceiver = new TimeChangeReceiver();
-//            IntentFilter filter = new IntentFilter();
-//            filter.addAction(Intent.ACTION_TIME_TICK);
-//            filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
-//            context.registerReceiver(mTimeChangeReceiver, filter, null, null);
-
         }
     }
 
