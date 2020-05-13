@@ -1,4 +1,4 @@
-package com.snbc.temp;
+package com.snbc.temptest;
 
 import android.os.Bundle;
 
@@ -10,9 +10,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Utils.start(this);
-
     }
-
 }

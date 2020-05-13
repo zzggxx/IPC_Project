@@ -5,29 +5,13 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.snbc.temp"
+        applicationId "com.snbc.temptest"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    signingConfigs {
-        release {
-            storeFile file("../signApk/platform.keystore")
-            keyAlias 'platform'
-            keyPassword 'android'
-            storePassword 'android'
-        }
-
-        debug {
-            storeFile file("../signApk/platform.keystore")
-            keyAlias 'platform'
-            keyPassword 'android'
-            storePassword 'android'
-        }
     }
 
     buildTypes {
