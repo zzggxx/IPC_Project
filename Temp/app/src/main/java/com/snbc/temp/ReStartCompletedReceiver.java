@@ -20,7 +20,7 @@ public class ReStartCompletedReceiver extends BroadcastReceiver {
         if (ACTION_BOOT_COMPLETED.equals(action)) {
 //            重新定时闹钟
 //            new Timer()
-            AlarmUtils.start(context);
+//            AlarmUtils.start(context);
         }
     }
 

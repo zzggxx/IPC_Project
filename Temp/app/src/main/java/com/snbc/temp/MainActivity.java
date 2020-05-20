@@ -16,7 +16,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        定制与取消闹钟
         findViewById(R.id.btn_start).setOnClickListener(this);
+        findViewById(R.id.btn_cancel).setOnClickListener(this);
 
         try {
             Context context = createPackageContext("com.excellence.weather", Context.CONTEXT_IGNORE_SECURITY);

@@ -18,7 +18,7 @@
         </activity>
         <receiver android:name=".AlarmReceiver">
             <intent-filter>
-                <action android:name="com.snbc.otaapp"/>
+                <action android:name="com.snbc.otaapp11"/>
             </intent-filter>
         </receiver>
     </application>

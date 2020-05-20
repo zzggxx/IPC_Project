@@ -22,7 +22,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        if ("com.snbc.otaapp".equals(action)) {
+        if ("com.snbc.otaapp11".equals(action)) {
             Toast.makeText(context, "发来了广播,我要开始更新了", Toast.LENGTH_SHORT).show();
             Log.i(TAG, System.currentTimeMillis() + "start:__onReceive: 自定义了闹钟");
             SPUtils.put(context, "on_receive" + System.currentTimeMillis(), get());
