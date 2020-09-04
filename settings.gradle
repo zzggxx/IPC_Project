@@ -1,1 +1,2 @@
+include ':testtemp'
 include ':app', ':reboot', ':remoteservice', ':CustomerBinder', ':messenger', ':binderpool'
