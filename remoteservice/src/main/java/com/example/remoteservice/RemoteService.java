@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+/**
+ * 看详细步骤中有说明文档的
+ */
+
 public class RemoteService extends Service {
 
     IMyAidlInterface.Stub mStub = new IMyAidlInterface.Stub() {
