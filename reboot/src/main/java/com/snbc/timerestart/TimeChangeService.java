@@ -23,15 +23,6 @@ public class TimeChangeService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
-//        if (mTimeChangeReceiver == null) {
-//            mTimeChangeReceiver = new TimeChangeReceiver();
-//            IntentFilter filter = new IntentFilter();
-//            filter.addAction(Intent.ACTION_TIME_TICK);
-//            filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
-//            registerReceiver(mTimeChangeReceiver, filter, null, null);
-//        }
-
         return super.onStartCommand(intent, flags, startId);
     }
 

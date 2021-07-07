@@ -54,11 +54,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         startService(new Intent(this,TimeChangeService.class));
-//        mTimeChangeReceiver = new TimeChangeReceiver();
-//        IntentFilter filter = new IntentFilter();
-//        filter.addAction(Intent.ACTION_TIME_TICK);
-//        filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
-//        registerReceiver(mTimeChangeReceiver, filter, null, null);
     }
 
     private void showTimerPicker() {
