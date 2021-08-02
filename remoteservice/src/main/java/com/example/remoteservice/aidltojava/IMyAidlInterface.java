@@ -31,7 +31,7 @@ public interface IMyAidlInterface extends android.os.IInterface {
             if (((iin != null) && (iin instanceof IMyAidlInterface))) {
                 return ((IMyAidlInterface) iin);
             }
-            return new IMyAidlInterface.Stub.Proxy(obj);
+            return new IMyAidlInterface.Stub.Proxy(obj);  //注意这里这个链式文件
         }
 
         @Override
