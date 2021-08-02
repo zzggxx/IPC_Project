@@ -11,7 +11,10 @@ import android.os.RemoteException;
 
 public class RemoteService extends Service {
 
+//    这一这个接口的巧妙之处,外层接口的抽象方法需要实现,内部类是自动生成的
     IMyAidlInterface.Stub mStub = new IMyAidlInterface.Stub() {
+
+//        以下两个方式是 IMyAidlInterface这个接口中的抽象方法
         @Override
         public int add(int i, int j) throws RemoteException {
             return i + j;

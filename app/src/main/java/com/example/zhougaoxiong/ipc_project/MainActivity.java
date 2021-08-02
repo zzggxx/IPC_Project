@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+//            远程进程的引用
             mStub = IMyAidlInterface.Stub.asInterface(service);
             if (mStub == null) {
                 Log.i(TAG, "onServiceConnected: the stub is null");
@@ -62,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 //                调用方法
                 try {
                     int add = mStub.add(1, 2);
