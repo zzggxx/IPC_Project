@@ -1,12 +1,18 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\AndroidProject\\IPC_Project\\app\\src\\main\\aidl\\com\\example\\remoteservice\\IMyAidlInterface.aidl
+ * Original file: D:\\AndroidProject\\IPC_Project\\remoteservice\\src\\main\\aidl\\com\\example\\remoteservice\\IMyAidlInterface.aidl
  */
 package com.example.zhougaoxiong.ipc_project.aidltojava;
 // Declare any non-default types here with import statements
 
+/**
+ * 以下生成的东西是固定的格式(自己容易混淆接口那是因为自己很少用接口,容易和抽象类搞混淆,基础不知识淡忘了而已)
+ *
+ * 生成的 接口类 继承自 (系统的)接口类IInterface
+ */
 public interface IMyAidlInterface extends android.os.IInterface {
     /**
+     * 这也是自定义的,不是接口类定义的,注意这是一个抽象类继承自系统的Binder,并且实现了自定义的接口类
      * Local-side IPC implementation stub class.
      */
     public static abstract class Stub extends android.os.Binder implements IMyAidlInterface {
@@ -31,9 +37,10 @@ public interface IMyAidlInterface extends android.os.IInterface {
             if (((iin != null) && (iin instanceof IMyAidlInterface))) {
                 return ((IMyAidlInterface) iin);
             }
-            return new IMyAidlInterface.Stub.Proxy(obj);
+            return new Proxy(obj);  //注意这里这个链式文件
         }
 
+//        返回的是这个sub类本身
         @Override
         public android.os.IBinder asBinder() {
             return this;
@@ -54,6 +61,17 @@ public interface IMyAidlInterface extends android.os.IInterface {
                     int _arg1;
                     _arg1 = data.readInt();
                     int _result = this.add(_arg0, _arg1);
+                    reply.writeNoException();
+                    reply.writeInt(_result);
+                    return true;
+                }
+                case TRANSACTION_subtract: {
+                    data.enforceInterface(descriptor);
+                    int _arg0;
+                    _arg0 = data.readInt();
+                    int _arg1;
+                    _arg1 = data.readInt();
+                    int _result = this.subtract(_arg0, _arg1);
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
@@ -89,7 +107,26 @@ public interface IMyAidlInterface extends android.os.IInterface {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     _data.writeInt(i);
                     _data.writeInt(j);
-                    mRemote.transact(IMyAidlInterface.Stub.TRANSACTION_add, _data, _reply, 0);
+                    mRemote.transact(Stub.TRANSACTION_add, _data, _reply, 0);
+                    _reply.readException();
+                    _result = _reply.readInt();
+                } finally {
+                    _reply.recycle();
+                    _data.recycle();
+                }
+                return _result;
+            }
+
+            @Override
+            public int subtract(int i, int j) throws android.os.RemoteException {
+                android.os.Parcel _data = android.os.Parcel.obtain();
+                android.os.Parcel _reply = android.os.Parcel.obtain();
+                int _result;
+                try {
+                    _data.writeInterfaceToken(DESCRIPTOR);
+                    _data.writeInt(i);
+                    _data.writeInt(j);
+                    mRemote.transact(Stub.TRANSACTION_subtract, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
                 } finally {
@@ -101,7 +138,10 @@ public interface IMyAidlInterface extends android.os.IInterface {
         }
 
         static final int TRANSACTION_add = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
+        static final int TRANSACTION_subtract = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
     }
 
     public int add(int i, int j) throws android.os.RemoteException;
+
+    public int subtract(int i, int j) throws android.os.RemoteException;
 }
