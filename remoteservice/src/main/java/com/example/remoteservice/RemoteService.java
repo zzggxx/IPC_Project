@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+import com.example.remoteservice.aidltojava.IMyAidlInterface;
+
 /**
  * 看详细步骤中有说明文档的
  */

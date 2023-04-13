@@ -23,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getName();
 
     private IMyAidlInterface mStub;
+
+    private int i;
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 //            远程进程的引用
             mStub = IMyAidlInterface.Stub.asInterface(service);
+            Log.i(TAG, "onServiceConnected: the stub = " + mStub);
             if (mStub == null) {
                 Log.i(TAG, "onServiceConnected: the stub is null");
             }
@@ -55,9 +58,13 @@ public class MainActivity extends AppCompatActivity {
 //        演示功能2,调用远程服务
         //                启动服务
         Intent intent = new Intent();
+//        ComponentName componentName =
+//                new ComponentName("com.example.remoteservice", "com.example.remoteservice.RemoteService");
+//        intent.setComponent(componentName);
         intent.setAction("com.example.remoteservice");
         intent.setPackage("com.example.remoteservice");
-        bindService(intent, conn, BIND_AUTO_CREATE);
+        boolean b = bindService(intent, conn, BIND_AUTO_CREATE);
+        Log.i(TAG, "bindService = " + b);
 
         final TextView textView = (TextView) findViewById(R.id.tv);
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
@@ -65,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                调用方法
                 try {
-                    int add = mStub.add(1, 2);
+                    int add = mStub.add(i++, 2);
                     textView.setText(String.valueOf(add));
                 } catch (RemoteException e) {
                     e.printStackTrace();
